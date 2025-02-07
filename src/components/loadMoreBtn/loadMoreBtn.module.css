@@ -1,0 +1,20 @@
+.btn {
+  position: relative;
+  padding: 10px 20px;
+  color: #fff;
+  /* color: #fbff00c2; */
+  background-color: #000096;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  border: none;
+  border-radius: 8px;
+  display: block;
+  margin: 15px auto;
+  box-shadow: none;
+  transition: box-shadow 250ms ease-in-out, background-color 250ms ease-in-out;
+}
+
+.btn:hover {
+  box-shadow: 0px 0px 10px 2px #fbff00c2;
+  background-color: #1515f7
+}
