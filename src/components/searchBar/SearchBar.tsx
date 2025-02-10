@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import s from "./searchBar.module.css";
 import { Search } from "lucide-react";
 import toast from "react-hot-toast";
 
-const SearchBar = ({ onHandleChangeQuery }) => {
-  const [value, setValue] = useState("");
+interface SearchBarProps {
+  onHandleChangeQuery: (query: string) => void;
+}
 
-  const handleSubmit = (evt) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onHandleChangeQuery }) => {
+  const [value, setValue] = useState<string>("");
+
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
     if (value === "" || value === " ") {
       toast.error("The search field is empty!");
@@ -18,10 +22,7 @@ const SearchBar = ({ onHandleChangeQuery }) => {
 
   return (
     <header className={s.header}>
-      <form
-        onSubmit={handleSubmit}
-        className={s.form}
-      >
+      <form onSubmit={handleSubmit} className={s.form}>
         <input
           onChange={(evt) => setValue(evt.target.value)}
           value={value}
@@ -32,7 +33,7 @@ const SearchBar = ({ onHandleChangeQuery }) => {
           className={s.input}
         />
         <button
-          onClick={handleSubmit}
+          // onClick={handleSubmit}
           type="submit"
           className={s.button}
         >
@@ -44,5 +45,3 @@ const SearchBar = ({ onHandleChangeQuery }) => {
 };
 
 export default SearchBar;
-
-// #icon-search

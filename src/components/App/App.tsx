@@ -6,17 +6,16 @@ import Loader from "../loader/Loader";
 import LoadMoreBtn from "../loadMoreBtn/LoadMoreBtn";
 import toast from "react-hot-toast";
 import ImageModal from "../ImageModal/ImageModal";
+import { ModalImage, Picture } from "./App.types";
 
-// const YOUR_ACCESS_KEY = "XZStRBfACQP-q-kCXR0IJai0mE6pvomLOZZrclZrEPM";
-
-const App = () => {
-  const [picture, setPicture] = useState([]);
-  const [query, setQuery] = useState("");
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [selectedPict, setSelectedPic] = useState({});
+const App: React.FC = () => {
+  const [picture, setPicture] = useState<Picture[]>([]);
+  const [query, setQuery] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedPict, setSelectedPic] = useState<ModalImage | null>(null);
 
   useEffect(() => {
     if (!query) {
@@ -44,7 +43,7 @@ const App = () => {
     setPage((prev) => prev + 1);
   };
 
-  const handleChangeQuery = (newQuery) => {
+  const handleChangeQuery = (newQuery: string): void => {
     if (newQuery === query) {
       toast.error("Enter new text to search for images!");
       return;
@@ -54,12 +53,12 @@ const App = () => {
     setPage(1);
   };
 
-  const openModal = (picture) => {
+  const openModal = (picture: ModalImage): void => {
     setIsOpen(true);
     setSelectedPic(picture);
   };
 
-  const closeModal = () => {
+  const closeModal = (): void => {
     setIsOpen(false);
     setSelectedPic(null);
   };
