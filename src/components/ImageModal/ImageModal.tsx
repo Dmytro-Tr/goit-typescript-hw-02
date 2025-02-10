@@ -12,7 +12,7 @@ interface ImageModalProps {
 
 const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, picture }) => {
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose} shouldCloseOnOverlayClick={true}>
+    <Modal isOpen={isOpen} onRequestClose={onClose} shouldCloseOnOverlayClick={true} className={s.modal}>
       <div className={s.imgBox}>
         <img className={s.img} src={picture ? picture.modalPict : ""} alt={picture ? picture.altDescr : ""} />
       </div>
