@@ -26,7 +26,7 @@ const App: React.FC = () => {
       try {
         setIsLoading(true);
         setIsError(false);
-        const data = await fetchArticles(query, page);
+        const data: Picture[] = await fetchArticles(query, page);
         setPicture((prev) => [...prev, ...data]);
         setIsLoading(false);
       } catch (error) {
